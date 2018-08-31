@@ -4,16 +4,22 @@
 The package is available by importing its default function:
 
 ```js
-import markers from '@a-la/markers'
+import makeRules from '@a-la/markers'
 ```
 
-```### markers
+```### makeRules
 [
-  ["arg1", "string"],
-  ["arg2?", "boolean"]
+  ["rules?", "Rule[]"]
 ]
 ```
 
-Call this function to get the result you want.
+This function will surround the rules with cut and paste rules for markers, to exclude from transforms:
+
+- strings
+- template literals
+- block comments
+- inline comments
 
 %EXAMPLE: example/example.js, ../src => @a-la/markers%
+
+%FORK-js example example/example.js%
