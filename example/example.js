@@ -1,6 +1,17 @@
 /* yarn example/ */
-import markers from '../src'
+import makeRules from '../src'
 
-(async () => {
-  await markers()
-})()
+const { rules, markers } = makeRules([
+  {
+    re: 'ALAMODE_RULE',
+    replacement(match) {
+      return match
+    },
+  },
+])
+
+console.log('\nRules:')
+console.log(rules)
+
+console.log('\nMarkers:')
+console.log(markers)
