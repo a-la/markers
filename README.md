@@ -13,6 +13,7 @@ yarn add -E @a-la/markers
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
   * [`makeRules(rules?: Rule[])`](#makerulesrules-rule-void)
+- [TODO](#todo)
 - [Copyright](#copyright)
 
 ## API
@@ -99,6 +100,9 @@ Markers:
      map: {},
      lastIndex: 0 } }
 ```
+## TODO
+
+- [ ] Use negative lookahead in the strings regex to allow for escaping.
 
 ## Copyright
 
