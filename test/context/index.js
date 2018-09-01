@@ -1,5 +1,7 @@
 import { resolve } from 'path'
 import { debuglog } from 'util'
+import Catchment from 'catchment'
+import { createReadStream } from 'fs';
 
 const LOG = debuglog('@a-la/markers')
 
@@ -23,6 +25,15 @@ export default class Context {
    */
   get FIXTURE() {
     return resolve(FIXTURE, 'test.txt')
+  }
+  get JS_FIXTURE() {
+    return resolve(FIXTURE, 'fixture.js')
+  }
+  async readFile(path) {
+    const rs = createReadStream(path)
+    const { promise } = new Catchment({ rs })
+    const res = await promise
+    return res
   }
   get SNAPSHOT_DIR() {
     return resolve(__dirname, '../snapshot')
