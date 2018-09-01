@@ -1,5 +1,9 @@
 ## 1 September 2018
 
+### 1.0.3
+
+- [fix] Return additional markers, including `regexes`, _etc_.
+
 ### 1.0.2
 
 - [fix] Ensure correct order to match strings before regexes.
