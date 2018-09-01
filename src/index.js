@@ -66,6 +66,9 @@ const makeRules = (rules = []) => {
       strings,
       comments,
       inlineComments,
+      escapes,
+      regexes,
+      regexGroups,
     },
   }
 }
