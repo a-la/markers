@@ -12,7 +12,7 @@ yarn add -E @a-la/markers
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-  * [`makeRules(rules?: !Array<!_restream.Rule>)`](#makerulesrules-array_restreamrule-void)
+  * [`makeRules(rules?: !Array<!_restream.Rule>): !Array<!_restream.Rule>`](#makerulesrules-array_restreamrule-array_restreamrule)
 - [Copyright](#copyright)
 
 
@@ -24,7 +24,7 @@ The package is available by importing its default function:
 import makeRules from '@a-la/markers'
 ```
 
-### `makeRules(`<br/>&nbsp;&nbsp;`rules?: !Array<!_restream.Rule>,`<br/>`): void`
+### `makeRules(`<br/>&nbsp;&nbsp;`rules?: !Array<!_restream.Rule>,`<br/>`): !Array<!_restream.Rule>`
 
 This function will surround the rules with cut and paste rules for markers, to exclude from transforms:
 
@@ -35,13 +35,13 @@ This function will surround the rules with cut and paste rules for markers, to e
 - regexes
 
 > **[!] Important** The current implementation does not support the following:
-    ```js
-    // the // will be considered to be a comment and break the process
-    const noLink = `
-      https://${host}/test
-    `
-    export { noLink }
-    ```
+
+```js
+// the // will be considered to be a comment and break the process
+// because the string literal will not be complete without the closing `
+const noLink = `https://${host}/test`
+export { noLink }
+```
 
 ```js
 /* yarn example/ */
@@ -139,6 +139,8 @@ Markers:
      map: {},
      lastIndex: 0 } }
 ```
+
+%-1%
 
 ## Copyright
 
