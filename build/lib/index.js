@@ -3,4 +3,3 @@
 
 module.exports.commentsRe = commentsRe
 module.exports.inlineCommentsRe = inlineCommentsRe
-//# sourceMappingURL=index.js.map
