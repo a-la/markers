@@ -1,5 +1,17 @@
-const { resolve } = require('path')
-require('alamode')()
+/* yarn example/ */
+import makeRules from '../src'
 
-const p = resolve(__dirname, '..', process.argv[2])
-require(p)
+const { rules, markers } = makeRules([
+  {
+    re: 'ALAMODE_RULE',
+    replacement(match) {
+      return match
+    },
+  },
+])
+
+console.log('\nRules:')
+console.log(rules)
+
+console.log('\nMarkers:')
+console.log(markers)

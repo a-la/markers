@@ -20,6 +20,6 @@ This function will surround the rules with cut and paste rules for markers, to e
 - block comments
 - inline comments
 
-%EXAMPLE: example/example.js, ../src => @a-la/markers%
+%EXAMPLE: example, ../src => @a-la/markers%
 
-%FORK-js example example/example.js%
+%FORK-js example.js%
