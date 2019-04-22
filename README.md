@@ -12,9 +12,9 @@ yarn add -E @a-la/markers
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-  * [`makeRules(rules?: Rule[])`](#makerulesrules-rule-void)
-- [TODO](#todo)
+  * [`makeRules(rules?: !Array<!_restream.Rule>)`](#makerulesrules-array_restreamrule-void)
 - [Copyright](#copyright)
+
 
 ## API
 
@@ -24,7 +24,7 @@ The package is available by importing its default function:
 import makeRules from '@a-la/markers'
 ```
 
-### `makeRules(`<br/>&nbsp;&nbsp;`rules?: Rule[],`<br/>`): void`
+### `makeRules(`<br/>&nbsp;&nbsp;`rules?: !Array<!_restream.Rule>,`<br/>`): void`
 
 This function will surround the rules with cut and paste rules for markers, to exclude from transforms:
 
@@ -32,6 +32,16 @@ This function will surround the rules with cut and paste rules for markers, to e
 - template literals
 - block comments
 - inline comments
+- regexes
+
+> **[!] Important** The current implementation does not support the following:
+    ```js
+    // the // will be considered to be a comment and break the process
+    const noLink = `
+      https://${host}/test
+    `
+    export { noLink }
+    ```
 
 ```js
 /* yarn example/ */
@@ -52,28 +62,36 @@ console.log(rules)
 console.log('\nMarkers:')
 console.log(markers)
 ```
-
 ```js
 Rules:
-[ { re: /\/\*(?:[\s\S]+?)\*\//g,
+[ { re: /\\[\\`'"\/]/g, replacement: [Function: replacement] },
+  { re: /\/\*(?:[\s\S]+?)\*\//g,
     replacement: [Function: replacement] },
   { re: /\/\/(.+)/gm, replacement: [Function: replacement] },
-  { re: /`[\s\S]+?`/gm, replacement: [Function: replacement] },
   { re: /(["'])(.*?)\1/gm, replacement: [Function: replacement] },
+  { re: /\[(.*?)\]/gm, replacement: [Function: replacement] },
+  { re: /\/(.+?)\//gm, replacement: [Function: replacement] },
+  { re: /`([\s\S]*?)`/gm, replacement: [Function: replacement] },
   { re: 'ALAMODE_RULE', replacement: [Function: replacement] },
-  { re: /%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%/g,
-    replacement: [Function: replacement] },
   { re: /%%_RESTREAM_LITERALS_REPLACEMENT_(\d+)_%%/g,
+    replacement: [Function: replacement] },
+  { re: /%%_RESTREAM_REGEXES_REPLACEMENT_(\d+)_%%/g,
+    replacement: [Function: replacement] },
+  { re: /%%_RESTREAM_REGEXGROUPS_REPLACEMENT_(\d+)_%%/g,
+    replacement: [Function: replacement] },
+  { re: /%%_RESTREAM_STRINGS_REPLACEMENT_(\d+)_%%/g,
     replacement: [Function: replacement] },
   { re: /%%_RESTREAM_INLINECOMMENTS_REPLACEMENT_(\d+)_%%/g,
     replacement: [Function: replacement] },
   { re: /%%_RESTREAM_COMMENTS_REPLACEMENT_(\d+)_%%/g,
+    replacement: [Function: replacement] },
+  { re: /%%_RESTREAM_ESCAPES_REPLACEMENT_(\d+)_%%/g,
     replacement: [Function: replacement] } ]
 
 Markers:
 { literals: 
    { name: 'literals',
-     re: /`[\s\S]+?`/gm,
+     re: /`([\s\S]*?)`/gm,
      regExp: /%%_RESTREAM_LITERALS_REPLACEMENT_(\d+)_%%/g,
      getReplacement: [Function: getDefaultReplacement],
      map: {},
@@ -98,14 +116,46 @@ Markers:
      regExp: /%%_RESTREAM_INLINECOMMENTS_REPLACEMENT_(\d+)_%%/g,
      getReplacement: [Function: getDefaultReplacement],
      map: {},
+     lastIndex: 0 },
+  escapes: 
+   { name: 'escapes',
+     re: /\\[\\`'"\/]/g,
+     regExp: /%%_RESTREAM_ESCAPES_REPLACEMENT_(\d+)_%%/g,
+     getReplacement: [Function: getDefaultReplacement],
+     map: {},
+     lastIndex: 0 },
+  regexes: 
+   { name: 'regexes',
+     re: /\/(.+?)\//gm,
+     regExp: /%%_RESTREAM_REGEXES_REPLACEMENT_(\d+)_%%/g,
+     getReplacement: [Function: getDefaultReplacement],
+     map: {},
+     lastIndex: 0 },
+  regexGroups: 
+   { name: 'regexGroups',
+     re: /\[(.*?)\]/gm,
+     regExp: /%%_RESTREAM_REGEXGROUPS_REPLACEMENT_(\d+)_%%/g,
+     getReplacement: [Function: getDefaultReplacement],
+     map: {},
      lastIndex: 0 } }
 ```
-## TODO
-
-- [ ] Use negative lookahead in the strings regex to allow for escaping.
 
 ## Copyright
 
-(c) [À La Mode][1] 2018
-
-[1]: https://alamode.cc
+<table>
+  <tr>
+    <th>
+      <a href="https://artd.eco">
+        <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco" />
+      </a>
+    </th>
+    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="https://alamode.cc">À La Mode</a> 2019</th>
+    <th>
+      <a href="https://www.technation.sucks" title="Tech Nation Visa">
+        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif"
+          alt="Tech Nation Visa" />
+      </a>
+    </th>
+    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
+  </tr>
+</table>

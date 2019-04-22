@@ -2,12 +2,8 @@ import { makeMarkers, makeCutRule, makePasteRule } from 'restream'
 import { commentsRe, inlineCommentsRe } from './lib'
 
 /**
- * @typedef {import('restream').Rule} Rule
- */
-
-/**
  * Create a new set of rules, where service markers are used to exclude comments and strings from processing.
- * @param {Rule[]} [rules] A set of rules to surround with markers. Typically, this will be done by `alamode`.
+ * @param {!Array<!_restream.Rule>} [rules] A set of rules to surround with markers. Typically, this will be done by `alamode`.
  */
 const makeRules = (rules = []) => {
   const {
@@ -74,3 +70,8 @@ const makeRules = (rules = []) => {
 }
 
 export default makeRules
+
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('restream').Rule} _restream.Rule
+ */
