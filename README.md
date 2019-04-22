@@ -140,7 +140,7 @@ Markers:
      lastIndex: 0 } }
 ```
 
-%-1%
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>
 
 ## Copyright
 
