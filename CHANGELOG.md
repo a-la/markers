@@ -1,3 +1,10 @@
+## 22 April 2019
+
+### [1.1.0](https://github.com/a-la/markers/compare/v1.0.3...v1.1.0)
+
+- [package] Publish `src` as a module.
+- [deps] Update and unlock dependencies.
+
 ## 1 September 2018
 
 ### 1.0.3
