@@ -1,6 +1,6 @@
 {
   "name": "@a-la/markers",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A set of service markers used by alamode, e.g., to cut and paste comments.",
   "main": "build/index.js",
   "module": "src/index.js",
