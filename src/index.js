@@ -30,13 +30,11 @@ const makeRules = (rules = []) => {
   const [
     cutComments, cutInlineComments, cutStrings, cutLiterals,
     cutEscapes, cutRegexes, cutRegexGroups,
-  ] = mr
-    .map(makeCutRule)
+  ] = mr.map(makeCutRule)
   const [
     pasteComments, pasteInlineComments, pasteStrings, pasteLiterals,
     pasteEscapes, pasteRegexes, pasteRegexGroups,
-  ] = mr
-    .map(makePasteRule)
+  ] = mr.map(m => makePasteRule(m))
 
   const allRules = [
     cutEscapes,
@@ -70,6 +68,8 @@ const makeRules = (rules = []) => {
 }
 
 export default makeRules
+
+export { inlineCommentsRe, commentsRe }
 
 /**
  * @suppress {nonStandardJsDocs}

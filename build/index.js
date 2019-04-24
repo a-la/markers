@@ -71,7 +71,13 @@ const makeRules = (rules = []) => {
 
 module.exports=makeRules
 
+
+
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('restream').Rule} _restream.Rule
  */
+
+
+module.exports.inlineCommentsRe = inlineCommentsRe
+module.exports.commentsRe = commentsRe
