@@ -1,3 +1,14 @@
+## 24 April 2019
+
+### [1.2.0](https://github.com/a-la/markers/compare/v1.1.0...v1.2.0)
+
+- [api] Export `inlineCommentsRe` and `commentsRe` regexes.
+- [fix] Apply a patch to remove type warning:
+    ```js
+    mr.map(makePasteRule) // warning
+    mr.map(m => makePasteRule(m)) // fix
+    ```
+
 ## 22 April 2019
 
 ### [1.1.0](https://github.com/a-la/markers/compare/v1.0.3...v1.1.0)
