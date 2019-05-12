@@ -44,6 +44,7 @@ const makeRules = (rules = []) => {
     cutRegexGroups,
     cutRegexes,
     cutLiterals,
+    stopRule,
     ...rules,
     pasteLiterals,
     pasteRegexes,
@@ -65,6 +66,20 @@ const makeRules = (rules = []) => {
       regexGroups,
     },
   }
+}
+
+/**
+ * For debugging where markers went wrong.
+ * @type {_restream.Rule}
+ */
+const stopRule = {
+  re: /./,
+  replacement(m) {
+    /** @suppress {checkTypes} */
+    const stop = this['stopProcessing']
+    if (stop) this.brake()
+    return m
+  },
 }
 
 module.exports=makeRules

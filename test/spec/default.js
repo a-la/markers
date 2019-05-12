@@ -1,4 +1,4 @@
-import { equal, deepEqual } from 'zoroaster/assert'
+import { equal, deepEqual } from '@zoroaster/assert'
 import { Replaceable } from 'restream'
 import Catchment from 'catchment'
 import Context from '../context'

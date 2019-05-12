@@ -1,4 +1,4 @@
-import { equal } from 'zoroaster/assert'
+import { equal } from '@zoroaster/assert'
 import { Replaceable } from 'restream'
 import Catchment from 'catchment'
 import { createReadStream } from 'fs'
