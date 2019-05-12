@@ -1,3 +1,9 @@
+## 12 May 2019
+
+### [1.3.0](https://github.com/a-la/markers/compare/v1.2.0...v1.3.0)
+
+- [feature] Add the `stop` rule for debugging.
+
 ## 24 April 2019
 
 ### [1.2.0](https://github.com/a-la/markers/compare/v1.1.0...v1.2.0)
